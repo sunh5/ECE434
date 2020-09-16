@@ -9,6 +9,7 @@ length = 8
 curX = 1
 curY = 1
 clearFlag = 0
+quitFLag = 0
 
 foo = " "
 grid = [[foo for i in range(width+1)] for j in range(length+1)]
@@ -33,7 +34,9 @@ def printGrid():
             result = result + grid[i][j] + "  "
         
         print(result)
+
 grid[curX][curY] = "+"
+grid2 = grid
 printGrid()
 print("Instruction: w to move up; s to move down; a to move left; d to move right; c to clear")
 def drawGrid():
@@ -41,6 +44,8 @@ def drawGrid():
     global curX
     global curY
     global clearFlag
+    global quitFlag
+    global grid2
     if value == "w":
         grid[curX][curY] = "*"
         if clearFlag == 1:
@@ -77,6 +82,17 @@ def drawGrid():
             curY = 1
         else:
             curY += 1
+    elif value == "p":
+        for i in range (width+1):
+            for j in range (length+1):
+                grid[i][j] = " "
+                if (i == 0) & (j > 0):
+                    grid[i][j] =str(j-1)
+                    # print(grid[i][j])
+                if (j == 0) & (i > 0):
+                    grid[i][j] = str(i-1)+":"
+    elif value == "q":
+        quitFlag = 1
     else:
         print("Say what? I might have heard")
 
@@ -87,7 +103,10 @@ def drawGrid():
 
 
 while (1):
+    global quitFlag
     drawGrid()
+    # if quitFlag == 1:
+    #     break
 
 
 
