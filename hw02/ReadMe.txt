@@ -95,8 +95,8 @@ Using C:
    
     shortest period is 0.1ms
     
-    |Period   |CPU used for sh|CPU used for python|CPU used for C|
-    |---------|---------------|-------------------|--------------|
+    | Period   | CPU used for sh | CPU used for python | CPU used for C |
+    | ------- | ------------- | ----------------- | ------------ |
     |0.05     |34.2%          |4.0%               |2.6%          |
     |0.04     |39.6%          |5.3%               |3.9%          |
     |0.03     |45.0%          |5.8%               |3.3%          |
