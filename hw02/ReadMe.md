@@ -82,21 +82,21 @@ Using C:
 1. What's the min and max voltage?
     3.36V, -120mV
 2. What period is it?
-    101.2ms
+    100.0ms
 3. How close is it to 100ms?
-    It's 1.2ms longer than the 100ms
+    It's totally equal to 100ms.
 4. Why do they differ?
     Because there are other code running on the board. THe chip need some time to execute the code, and transmit to the certain GPIO pin. 
 5. Run htop and see how much processor you are using.
-    3.9% for togglegpio
+    2.2% for togglegpio
 6. Try different values for the sleep time (2nd argument). What's the shortest period you can get? 
    Make a table of the values you try and the corresponding period and processor usage. 
    Try using markdown tables: https://www.markdownguide.org/extended-syntax/#tables
    
     shortest period is 0.1ms
     
-    | Period   | CPU used for sh | CPU used for python | CPU used for C |
-    | ------- | ------------- | ----------------- | ------------ |
+    | Period   | CPU used for sh| CPU used for python| CPU used for C|
+    | -------  | -------------  | -----------------  | ----------- - |
     | 0.05     | 34.2%          | 4.0%               | 2.6%          |
     | 0.04     | 39.6%          | 5.3%               | 3.9%          |
     | 0.03     | 45.0%          | 5.8%               | 3.3%          |
@@ -110,10 +110,33 @@ Using C:
 8. Try launching something like vi. How stable is the period?
     The period is more unstable after vi launched.  
 9. Try cleaning up togglegpio.sh and removing unneeded lines. Does it impact the period?
-    Yes, the period closer to the correct period, which means the period is shorter. For my trail, it changed from 0.23ms to 0.214ms. 
+
 10. togglegpio uses bash (first line in file). Try using sh. Is the period shorter?
      
 11. What's the shortest period you can get? 
-    The shortest period I can get is 0.214ms.
+    The shortest period I can get is 94.7us.
     
   How much faster is it? Add your results to the table
+    The fastest toggle I can get is 94.7us.
+
+3.GPIOD
+ python 1bit :9.31us   2bits: 9.91us
+ C      1bit :2.27us   2bits: 2.428us 
+
+The table for the all shortest periods 
+
+|Comparasion of fastest toggles |
+|Languages|Period|
+|---------|------|
+|Shell | 8ms |
+|python | 0.214 ms  |
+|C     | 0.0947 ms  |
+|Gpiod python 1bit| 0.00931 ms  |
+|Gpiod python 2bits| 0.00991 ms  |
+|Gpiod C 1bit| 0.00227 ms  |
+|Gpiod C 2bits| 0.002428 ms  |
+
+4.Secrity
+  I successfully changed the port to 1911 and changed it back. 
+  I also successfully use iptable to block unavaible ips. 
+  

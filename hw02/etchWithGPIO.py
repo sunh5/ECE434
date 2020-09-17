@@ -1,9 +1,11 @@
-#   Written by Haoxuan Sun 9/9/2020
-#   Homework 01
-#   This code is to implement the function of Etch-a-sketch
+#!/usr/bin/env python3
+#   Written by Haoxuan Sun 9/16/2020
+#   Homework 02
+#   This code is to implement the function of Etch-a-sketch with gpio
 import numpy
 import Adafruit_BBIO.GPIO as GPIO
 import time
+
 #Set gpios to push button
 pushButton1 = "P8_7"
 pushButton2 = "P8_8"
@@ -11,30 +13,26 @@ pushButton3 = "P8_9"
 pushButton4 = "P8_10"
 pushButton5 = "P8_11"
 
+#Parameters used to etch-a-sketch
 width  = 8
 length = 8
-
 curX = 1
 curY = 1
 clearFlag = 0
 quitFLag = 0
 global value 
 
-foo = " "
-grid = [[foo for i in range(width+1)] for j in range(length+1)]
 
+#Define the input for all gpio pins
 GPIO.setup(pushButton1, GPIO.IN)
 GPIO.setup(pushButton2, GPIO.IN)
 GPIO.setup(pushButton3, GPIO.IN)
 GPIO.setup(pushButton4, GPIO.IN)   
 GPIO.setup(pushButton5, GPIO.IN) 
-#Set flags to interrupt
 
-interflag1 = 0;
-interflag2 = 0;
-interflag4 = 0;
-interflag3 = 0;
 
+foo = " "
+grid = [[foo for i in range(width+1)] for j in range(length+1)]
 for i in range (width+1):
     for j in range (length+1):
         grid[i][j] = " "
@@ -45,7 +43,7 @@ for i in range (width+1):
             grid[i][j] = str(i-1)+":"
         
             
-
+#Print out the grid
 def printGrid():
     for i in range (width+1):
         result = ""
@@ -60,6 +58,7 @@ grid[curX][curY] = "+"
 grid2 = grid
 printGrid()
 print("Instruction: w to move up; s to move down; a to move left; d to move right; c to clear")
+#Draw the grid according to button pressed
 def drawGrid():
     # value = callback1(a) #input("Direction=\n")
     global curX
@@ -123,14 +122,10 @@ def drawGrid():
         clearFlag = 1
     printGrid()
 
+#Define the callback function for each button pressed
 def callback1(a):
-    global interflag1;
-    global interflag2;
-    global interflag3;
-    global interflag4;
     global value
     if(a==pushButton1):
-        # return "w"
         value = "w"
         drawGrid()
     if(a==pushButton2):

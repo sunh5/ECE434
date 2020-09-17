@@ -25,14 +25,14 @@ GPIO.setup(pushButton2, GPIO.IN)
 GPIO.setup(pushButton3, GPIO.IN)
 GPIO.setup(pushButton4, GPIO.IN)    
 #Set flags to interrupt
-
 interflag1 = 0;
 interflag2 = 0;
 interflag4 = 0;
 interflag3 = 0;
 # print("lalala")
 
-def callback1(a):
+
+def callback(a):
     global interflag1;
     global interflag2;
     global interflag3;
@@ -69,14 +69,12 @@ def callback1(a):
     
 
 #GPIO.remove_event_detect(BT1)
-
-GPIO.add_event_detect(pushButton1, GPIO.BOTH, callback=callback1) 
-GPIO.add_event_detect(pushButton2, GPIO.BOTH, callback=callback1) 
-GPIO.add_event_detect(pushButton3, GPIO.BOTH, callback=callback1) 
-GPIO.add_event_detect(pushButton4, GPIO.BOTH, callback=callback1) 
+GPIO.add_event_detect(pushButton1, GPIO.BOTH, callback=callback) 
+GPIO.add_event_detect(pushButton2, GPIO.BOTH, callback=callback) 
+GPIO.add_event_detect(pushButton3, GPIO.BOTH, callback=callback) 
+GPIO.add_event_detect(pushButton4, GPIO.BOTH, callback=callback) 
 
  
-
 while True:
     time.sleep(100)
 GPIO.cleanup()
