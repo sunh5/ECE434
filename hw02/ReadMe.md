@@ -1,5 +1,11 @@
+#This file contains answers for part 2,3&4 for homework 2. 
 
-Using sh file
+# Buttons and LEDs
+See code in Question1.py.
+
+# Measuring a gpio pin on an Oscilloscope
+See code in togglegpio.sh
+Using shell file
 1. What's the min and max voltage?
     3.36V, -120mV
 2. What period is it?
@@ -38,6 +44,7 @@ Using sh file
     
     
 Using Python:
+See code in toggle.py
 1. What's the min and max voltage?
     3.36V, -120mV
 2. What period is it?
@@ -79,6 +86,7 @@ Using Python:
     
     
 Using C:
+See code in togglegpio.c
 1. What's the min and max voltage?
     3.36V, -120mV
 2. What period is it?
@@ -96,7 +104,7 @@ Using C:
     shortest period is 0.1ms
     
     | Period   | CPU used for sh| CPU used for python| CPU used for C|
-    | -------  | -------------  | -----------------  | ----------- - |
+    | ------- | ------------- | ----------------- | ------------ |
     | 0.05     | 34.2%          | 4.0%               | 2.6%          |
     | 0.04     | 39.6%          | 5.3%               | 3.9%          |
     | 0.03     | 45.0%          | 5.8%               | 3.3%          |
@@ -119,7 +127,8 @@ Using C:
   How much faster is it? Add your results to the table
     The fastest toggle I can get is 94.7us.
 
-3.GPIOD
+
+# GPIOD
  python 1bit :9.31us   2bits: 9.91us
  C      1bit :2.27us   2bits: 2.428us 
 
@@ -136,7 +145,10 @@ The table for the all shortest periods
 |Gpiod C 1bit| 0.00227 ms  |
 |Gpiod C 2bits| 0.002428 ms  |
 
-4.Secrity
+# Secrity
   I successfully changed the port to 1911 and changed it back. 
   I also successfully use iptable to block unavaible ips. 
+  I configured how to reject ssh connection for few fail attempts.
   
+# Etch-a-sketch
+  See code etchWithGPIO.py

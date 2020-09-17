@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #in this program, when a button is pushed, the corresponding LED will be on
+#Made by Haoxuan Sun 9/16/2020
 #
 import Adafruit_BBIO.GPIO as GPIO
 import time
