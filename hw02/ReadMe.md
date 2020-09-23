@@ -1,3 +1,19 @@
+# hw02 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Buttons and LEDs 
+|  7 | Etch-a-Sketch works
+|    | Measuring a gpio pin on an Oscilloscope 
+|  4 | Questions answered
+|  2 | Table complete
+|  1 | gpiod        *1-bit time should be faster than 2-bit*
+|    | Security
+|  1 | ssh port
+|  0 | iptables     *What command did you use?*
+|  1 | fail2ban
+| 18 | **Total**
+
 #This file contains answers for part 2,3&4 for homework 2. 
 
 # Buttons and LEDs
@@ -129,7 +145,8 @@ See code in togglegpio.c
 
 
 # GPIOD
- python 1bit :9.31us   2bits: 9.91us
+ python 1bit :9.31us   2bits: 9.91us        *It doesn't make sense that the 1-bit is slower than the 2-bit.*
+ 
  C      1bit :2.27us   2bits: 2.428us 
 
 The table for the all shortest periods 
@@ -147,7 +164,7 @@ The table for the all shortest periods
 
 # Secrity
   I successfully changed the port to 1911 and changed it back. 
-  I also successfully use iptable to block unavaible ips. 
+  I also successfully use iptable to block unavaible ips. *What command did you use?*
   I configured how to reject ssh connection for few fail attempts.
   
 # Etch-a-sketch
