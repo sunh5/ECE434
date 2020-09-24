@@ -8,11 +8,21 @@ import time
 import smbus
 import time
 import pdb; 
+from Adafruit_BBIO.Encoder import RotaryEncoder, eQEP1, eQEP2
+#Initialize the two encoders
+myEncoder = RotaryEncoder(eQEP2)
+myEncoder2 = RotaryEncoder(eQEP1)
+myEncoder.setAbsolute()
+myEncoder.enable()
+myEncoder2.setAbsolute()
+myEncoder2.enable()
+encoderPos = 0;
+encoderPos2 = 0;
 
 bus = smbus.SMBus(2)  # Use i2c bus 1
 matrix = 0x70         # Use address 0x70
 delay = 1; # Delay between images in s
-#Define the pattern of the matrix
+
 bus.write_byte_data(matrix, 0x21, 0)   # Start oscillator (p10)
 bus.write_byte_data(matrix, 0x81, 0)   # Disp on, blink off (p11)
 bus.write_byte_data(matrix, 0xe7, 0)   # Full brightness (page 15)
@@ -21,7 +31,7 @@ g1 = 0; g2 = 0; g3 = 0; g4 = 0; g5 = 0; g6 = 0; g7 = 0; g8 = 0
 pattern = [g1, r1, g2, r2, g3, r3, g4, r4,
            g5, r5, g6, r6, g7, r7, g8, r8
 ]
-reverse = [128,64,32,16,8,4,2,1]    #Used to define the position of light spot
+reverse = [128,64,32,16,8,4,2,1]
 
 #Set gpios to push button
 pushButton1 = "P8_7"
@@ -38,8 +48,9 @@ curY = 1
 clearFlag = 0
 quitFLag = 0
 global value 
-
-
+temp = 999; temp2 = 999
+tempReverse = [9,9,9,9,9,9,9,9]; tempReverse2 = [9,9,9,9,9,9,9,9];
+addFlag = 0;
 foo = " "
 redLabel = [[foo for i in range(width)] for j in range(length)]
 
@@ -81,6 +92,7 @@ pattern[0] = 128
 bus.write_i2c_block_data(matrix, 0, pattern)
 
 reverseRed = [0,0,0,0,0,0,0,0]
+# pdb.set_trace()
 print("Instruction: w to move up; s to move down; a to move left; d to move right; c to clear")
 #Draw the grid according to button pressed
 def drawGrid():
@@ -91,15 +103,18 @@ def drawGrid():
     global clearGreen
     global clearRed
     global reverseRed
+    # global addFlag
     global redLabel
+    global myEncoder
+    global encoderPos
     if value == "w":
+        addFlag = 0;
         grid[curX][curY] = "*"
-        if redLabel[curX-1][curY-1] != 1:           #Check is the position been occupied
-            reverseRed[curY-1] += reverse[curX-1]   #convert position to position on matrix
+        if redLabel[curX-1][curY-1] != 1:
+            reverseRed[curY-1] += reverse[curX-1]
         if (reverseRed[curY-1] > 255): reverseRed[curY-1] = 255
         pattern[curY*2-1] = reverseRed[curY-1]
         redLabel[curX-1][curY-1] = 1
-        
         if clearFlag == 1:
             grid[curX][curY] = " "
             clearFlag = 0
@@ -161,6 +176,7 @@ def drawGrid():
             curY += 1
         clearGreen()
         pattern[curY*2-2] = reverse[curX-1]
+        
     elif value == "p":
         for i in range (width+1):
             for j in range (length+1):
@@ -175,8 +191,10 @@ def drawGrid():
         reverseRed = [0,0,0,0,0,0,0,0]
         fo = " "; redLabel = [[fo for i in range(width+1)] for j in range(length+1)]
         pattern[curY*2-2] = reverse[curX-1]
+        
     elif value == "q":
         quitFlag = 1
+        
     else:
         print("Say what? I might have heard")
 
@@ -221,9 +239,24 @@ GPIO.add_event_detect(pushButton3, GPIO.RISING, callback=callback1)
 GPIO.add_event_detect(pushButton4, GPIO.RISING, callback=callback1) 
 GPIO.add_event_detect(pushButton5, GPIO.RISING, callback=callback1) 
 
-# bus.write_i2c_block_data(matrix, 0, pattern)
-
+#Determine which encoder selected, and which direction rotated. 
 while (1):
+    if myEncoder.position > encoderPos:
+        value = "w"
+        drawGrid()
+        encoderPos = myEncoder.position
+    elif myEncoder.position < encoderPos:
+        value = "s"
+        drawGrid()  
+        encoderPos = myEncoder.position
+    elif myEncoder2.position - encoderPos2 == 4:
+        value = "a"
+        drawGrid()  
+        encoderPos2 = myEncoder2.position
+    elif myEncoder2.position - encoderPos2 == -4:
+        value = "d"
+        drawGrid()  
+        encoderPos2 = myEncoder2.position
     global quitFlag
     # drawGrid()
  
