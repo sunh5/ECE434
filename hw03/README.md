@@ -1,3 +1,17 @@
+# hw03 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  5 | TMP101 
+|  3 |   | setup.sh
+|  2 |   | Documentation
+|  5 | Etch-a-Sketch
+|  3 |   | setup.sh
+|  2 |   | Documentation
+| 20 | **Total**
+
+*My comments are in italics. --may*
+
 # TMP101
 There four code files in this folder. First is TMP.sh, this is a shell script to read the temperatures from 
 two sensors. Run the code, and the temperatures will be printed out. 
