@@ -1,0 +1,1 @@
+cmd_/home/debian/exploringBB/extras/kernel/led/led.ko := ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /home/debian/exploringBB/extras/kernel/led/led.ko /home/debian/exploringBB/extras/kernel/led/led.o /home/debian/exploringBB/extras/kernel/led/led.mod.o ;  true
