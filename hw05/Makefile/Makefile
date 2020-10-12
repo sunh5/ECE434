@@ -78,11 +78,8 @@ all : app.arm
 # -----------------------------------
 
 app.arm: app.o	
-		# $(CC) $(CFLAGS) $(LINKER_FLAGS) app.o -o app.arm
 		$(CC) $(CFLAGS) $(LINKER_FLAGS) $< -o $@
 		@echo; echo $@ successfully created; echo
-
-
 
 # ---------------------------------------------------
 # ------ intermeditate object files rule (.o) -------
@@ -104,7 +101,6 @@ app.arm: app.o
 clean :
 		rm -rf app.arm
 		rm -rf app.o
-
 
 # -------------------------------------
 # ----- basic debug for Makefile ------

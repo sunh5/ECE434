@@ -1,7 +1,7 @@
 /**
  * @file   gpio_test.c
- * @author Derek Molloy
- * @date   19 April 2015
+ * @author Haoxuan Sun
+ * @date   12 10 2020
  * @brief  A kernel module for controlling a GPIO LED/button pair. The device mounts devices via
  * sysfs /sys/class/gpio/gpio115 and gpio49. Therefore, this test LKM circuit assumes that an LED
  * is attached to GPIO 49 which is on P9_23 and the button is attached to GPIO 115 on P9_27. There

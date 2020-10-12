@@ -1,7 +1,7 @@
 /**
  * @file   led.c
  * @author Derek Molloy
- * @date   19 April 2015
+ * @date   12 10 2020
  * @brief  A kernel module for controlling a simple LED (or any signal) that is connected to
  * a GPIO. It is threaded in order that it can flash the LED.
  * The sysfs entry appears at /sys/ebb/led49
