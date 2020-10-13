@@ -1,3 +1,17 @@
+# hw05 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Project - *Intresting project ideas. Do you know of a Siri API?*
+|  2 | Makefile
+|  4 | Kernel Source
+|  2 | Cross-Compiling
+|  8 | Kernel Modules: hello, ebbchar, gpio_test, led
+|  0 | Extras
+| 18 | **Total**
+
+*My comments are in italics. --may*
+
 # Homework 05
 -------
 # MakeFile 
