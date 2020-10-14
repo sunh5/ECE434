@@ -1,3 +1,17 @@
+# hw04 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Memory map 
+|  4 | mmap()
+|  4 | i2c via Kernel
+|  4 | Etch-a-Sketch via flask
+|  4 | LCD display
+|  1 | Extras
+| 19 | **Total**
+
+*My comments are in italics. --may*
+
 # Homework 04
 -------
 # Memory Map
@@ -15,7 +29,7 @@ The fast.py is used to test the shortest period of toggle time.
 The period measured on scope is 11.16us. The shortest period I got previously is 4.44us. The periods are pretty close. 
 
 # i2c via the Kernel Driver
-This program is to read temperatura through i2c communication via kernal driver. 
+This program is to read temperature through i2c communication via kernal driver. 
 Run the temperature.sh file, the temperature will be shown on screen. 
 
 # Control the LED matrix from a browser
