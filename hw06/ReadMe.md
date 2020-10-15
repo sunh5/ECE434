@@ -30,4 +30,4 @@ Because the external event begins by interrpting non critical IRQ.
 
 # PREEMPT_RT
 The four images for latencies measurement are in the file, which show the latencies with and without load in RT and non RT kernel. 
-I used the led makefile and the makefile I wrote in last homework for the load. We can see clearly from images, RT kernel doesn't have bounded latencies. 
+I used the led makefile and the makefile I wrote in last homework for the load. We can see clearly from images, RT kernel only have little and shorter bounded latencies than nonRT kernel. 
