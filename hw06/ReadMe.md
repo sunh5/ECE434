@@ -1,4 +1,18 @@
-# Homework04
+# hw06 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Project 
+|  5 | Questions
+|  4 | PREEMPT_RT
+|  2 | Plots to 500 us
+|  5 | Plots - Heavy/Light load
+|  0 | Extras
+| 18 | **Total**
+
+*My comments are in italics. --may*
+
+# Homework06
 -------
 # Watch RT
 
@@ -31,3 +45,7 @@ Because the external event begins by interrpting non critical IRQ.
 # PREEMPT_RT
 The four images for latencies measurement are in the file, which show the latencies with and without load in RT and non RT kernel. 
 I used the led makefile and the makefile I wrote in last homework for the load. We can see clearly from images, RT kernel only have little and shorter bounded latencies than nonRT kernel. 
+
+*Since there are two lines on each graph, you only need two graphs.  I'm not sure
+what the NonTR with Load.png plot is showing in the lines are labeled as
+PREEMPT_RT and NON-RT*
