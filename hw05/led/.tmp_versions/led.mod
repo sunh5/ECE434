@@ -1,3 +1,3 @@
-/home/debian/exploringBB/extras/kernel/led/led.ko
-/home/debian/exploringBB/extras/kernel/led/led.o
+/home/debian/ECE434/hw05/led/led.ko
+/home/debian/ECE434/hw05/led/led.o
 
