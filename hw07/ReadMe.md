@@ -2,7 +2,7 @@
 --------
 
 # Project
-My partner and I have created a wiki page including all the stuff of our project
+My partner and I have created a wiki page including all the stuff of our project. We have installed opencv and did some research about it. We will build ssh connection between siri and beaglebone for next step. 
 
 # Blynk
 Run setup.sh and install.sh first to set the BLYNK_AUTH to BeagleBone and set up the environment. Then run the leds.js or leds.py 
