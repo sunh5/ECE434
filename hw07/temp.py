@@ -28,7 +28,7 @@ def pushed():
     tmp = bus.read_byte_data(address1,0)
     print(tmp)
     # blynk.virtual_write(10, 255)
-    blynk.virtual_write(3, tmp)  # Virtual LED: 255 max brightness
+    blynk.virtual_write(5, tmp)  # Virtual LED: 255 max brightness
     time.sleep(1)
 # GPIO.add_event_detect(button, GPIO.BOTH, callback=pushed) 
 
