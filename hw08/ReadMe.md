@@ -31,6 +31,7 @@ Use the same pruout pin used before. I set the maximum time sample to 10000, the
 sawtooth. The results show in pictures SAWTOOTH.png, SINE.png, and TRIANGLE.png. 
 # Speed comparsion
 This table includes all the results. 
+|----|-----|
 |2.6 Blinking an LED: |12.5MHz |
 |5.3 PWM Generator: |50MHz |
 |5.4 Controlling the PWM Frequenc: |326.8kHz |
