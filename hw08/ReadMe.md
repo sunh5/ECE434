@@ -1,8 +1,24 @@
+# hw08 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+| 14 | PRU
+|  2 | Controlling the PWM Frequency - optional
+|  2 | Reading an Input at Regular Intervals - optional
+|  0 | Analog Wave Generator - optional - *Filter is missing*
+| 18 | **Total**
+
+*My comments are in italics. --may*
+
+
 # Homework 8
 -------
 # PRU
 Run ls /dev/remoteproc/ to setup pru cores. 
-# 2.6Blinking an LED
+
+*This doesn't make sense.*
+
+# 2.6B linking an LED
 The code is in folder BLink-LED. Set the pinmode and set the direction to out first. Then run the setup.sh. Use command 
 "make TARGET=hello.pru0" to run the code. The scope measurement shows on picture "toggle-LED.png". 
 The speed can reach 12.5MHz. 
@@ -24,14 +40,15 @@ There is no jitter.
 After I run the pwm-test.c, the off time became longer. Hence it worked. 
 
 # Reading an Input at Regular Intervals
-I used a function generator to generate a aquare wave with 3Vpp, and 1kHz. As I increase the frequency to about 1MHz, there is
+I used a function generator to generate a square wave with 3Vpp, and 1kHz. As I increase the frequency to about 1MHz, there is
 a 56ns delay between input and output signal. Result shows on picture input-read.png
 # Analog Wave Generator
 Use the same pruout pin used before. I set the maximum time sample to 10000, them I can see the pattern of wave triangle, sine, and 
 sawtooth. The results show in pictures SAWTOOTH.png, SINE.png, and TRIANGLE.png. 
 # Speed comparsion
 This table includes all the results. 
-|----|-----|
+|Section |speed|
+|------|------|
 |2.6 Blinking an LED: |12.5MHz |
 |5.3 PWM Generator: |50MHz |
 |5.4 Controlling the PWM Frequenc: |326.8kHz |
