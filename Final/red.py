@@ -22,12 +22,12 @@ moveServo(90)
 time.sleep(0.1)
 
 # Function to eliminate noise
-# def erode(image):
-#     kernel = np.ones((6, 6), np.uint8)
-#     return cv2.erode(image, kernel, iterations=1)
-def erodeblue(image):
-    kernel = np.ones((5, 5), np.uint8)
-    return cv2.erode(image, kernel, iterations=1)  
+def erodePic(image):
+    kernel = np.ones((6, 6), np.uint8)
+    return cv2.erode(image, kernel, iterations=1)
+# def erodeblue(image):
+#     kernel = np.ones((5, 5), np.uint8)
+#     return cv2.erode(image, kernel, iterations=1)  
 
 # Start capture
 cap = cv2.VideoCapture(0)
@@ -46,11 +46,11 @@ def cameraRec():
     cap.set(cv2.CAP_PROP_FPS, 1)
     ret, frame = cap.read()
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    # define range of blue color in HSV
-    lower_blue = np.array([100,80,0])
-    upper_blue = np.array([140,255,255])
+    # define range of red color in HSV
+    lower_red = np.array([0,50,50]) #red value
+    upper_red = np.array([10,255,255]) #red value
     # Threshold the HSV image to get only blue colors
-    mask = cv2.inRange(hsv, lower_blue, upper_blue)
+    mask = cv2.inRange(hsv, lower_red, upper_red)
 
     # Bitwise-AND mask and original image
     res = cv2.bitwise_and(frame,frame, mask= mask)
@@ -60,7 +60,7 @@ def cameraRec():
     # Transform the image to grayscale
     gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
     # Eliminate noises in the image
-    erode = erodeblue(gray)
+    erode = erodePic(gray)
     # cv2.imwrite("erode.png", erode)
     # rat,thresh = cv2.threshold(erode,60,255,cv2.THRESH_BINARY) #Green
     # THreshold the grayscale to binary color
@@ -89,7 +89,7 @@ def cameraRec():
     return center
 
 # Rotate camera to scan
-resolution = 10
+resolution = 8
 step = (110-70)/resolution
 history = np.array([])
 for i in range(resolution):
@@ -114,4 +114,3 @@ moveServo(70+(bestIndex*step))
 
 cap.release()
 cv2.destroyAllWindows()
-
