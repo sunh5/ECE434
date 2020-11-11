@@ -30,13 +30,14 @@ if cap.isOpened():
 else:
     print ("camera not working")
     
-cap.open(0)
-time.sleep(1)
-cap.set(3,600)
-cap.set(4,500)
-cap.set(cv2.CAP_PROP_FPS, 1)
+
 i = 0
 def cameraRec():
+    cap.open(0)
+    #time.sleep(1)
+    cap.set(3,600)
+    cap.set(4,500)
+    cap.set(cv2.CAP_PROP_FPS, 1)
     ret, frame = cap.read()
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 # define range of blue color in HSV
@@ -73,17 +74,17 @@ def cameraRec():
         center = yaxis[int(yaxis.size/2)]
     print(center)
     cv2.imwrite("frame.png", thresh)
-    pdb.set_trace()
-    i=i+1
+    cap.release()
     return center
 
-resolution = 5
+resolution = 10
 step = (110-70)/resolution
 history = np.array([])
 for i in range(resolution):
     moveServo(70+(i*step))
-    time.sleep(0.1)
-    history = np.append(history, cameraRec())
+    time.sleep(0.08)
+    result = cameraRec()
+    history = np.append(history, result)
 
 bestIndex = 0
 smallestDiff = 1000

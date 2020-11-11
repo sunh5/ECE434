@@ -35,20 +35,29 @@ cap.set(3,600)
 cap.set(4,500)
 cap.set(cv2.CAP_PROP_FPS, 1)
 ret, frame = cap.read()
-
+cv2.imwrite("111.png", frame)
+print("dong")
+cap.release()
+time.sleep(2)
+cap.open(0)
+cap.set(3,600)
+cap.set(4,500)
+cap.set(cv2.CAP_PROP_FPS, 1)
+ret, frame = cap.read()
+cv2.imwrite("222.png", frame)
 # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 # define range of blue color in HSV
-# lower_blue = np.array([100,80,0])
-# upper_blue = np.array([140,255,255])
-lower_red = np.array([0,50,50]) #red value
-upper_red = np.array([10,255,255]) #red value
+lower_blue = np.array([100,80,0])
+upper_blue = np.array([140,255,255])
+# lower_red = np.array([0,50,50]) #red value
+# upper_red = np.array([10,255,255]) #red value
 # lower_green = np.array([36, 25,25]) #red value
 # upper_green = np.array([86, 255,255]) #red value
 
 # Threshold the HSV image to get only blue colors
-mask = cv2.inRange(hsv, lower_red, upper_red)
-# mask = cv2.inRange(hsv, lower_blue, upper_blue)
+# mask = cv2.inRange(hsv, lower_red, upper_red)
+mask = cv2.inRange(hsv, lower_blue, upper_blue)
 # mask = cv2.inRange(hsv, lower_green, upper_green)
 
 # Bitwise-AND mask and original image
