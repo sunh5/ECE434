@@ -45,6 +45,7 @@ def cameraRec():
     cap.set(4,500)
     cap.set(cv2.CAP_PROP_FPS, 1)
     ret, frame = cap.read()
+    cv2.imwrite("frame.png", frame)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     # define range of red color in HSV
     lower_red = np.array([0,50,50]) #red value
@@ -54,14 +55,16 @@ def cameraRec():
 
     # Bitwise-AND mask and original image
     res = cv2.bitwise_and(frame,frame, mask= mask)
-    # cv2.imwrite("res.png", res)
+    cv2.imwrite("res.png", res)
     # Blur the iamge
     blur = cv2.GaussianBlur(res,(5,5),0)
+    cv2.imwrite("blur.png", blur)
     # Transform the image to grayscale
     gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite("gray.png", gray)
     # Eliminate noises in the image
     erode = erodePic(gray)
-    # cv2.imwrite("erode.png", erode)
+    cv2.imwrite("erode.png", erode)
     # rat,thresh = cv2.threshold(erode,60,255,cv2.THRESH_BINARY) #Green
     # THreshold the grayscale to binary color
     rat,thresh = cv2.threshold(erode,50,255,cv2.THRESH_BINARY) #BLue
@@ -84,7 +87,7 @@ def cameraRec():
         center = yaxis[int(yaxis.size/2)] # Yaxis of the object
     print(center)
     # Save the image in local file
-    cv2.imwrite("frame.png", thresh)
+    cv2.imwrite("thresh.png", thresh)
     cap.release()
     return center
 
